@@ -6,9 +6,11 @@ const qs = require('qs');
 const axios = require('axios');
 var parser = require('cron-parser');
 
+export const runtime = 'edge';
+
 export default async function handler(req, res)  {
-   await checkJob();
-   res.status(200).json({ message: 'Hello from Next.js!' })
+   let message = await checkJob();
+   res.status(200).json({ message: message })
 }
 
 async function checkJob() {
@@ -30,6 +32,8 @@ async function checkJob() {
             updateLastRun(data);
          }
       }
+
+      return "Completed! on " + new Date()
    });
 }
 
