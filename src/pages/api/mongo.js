@@ -6,7 +6,7 @@ const qs = require('qs');
 const axios = require('axios');
 var parser = require('cron-parser');
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export default async function handler(req, res)  {
    let message = await checkJob();
